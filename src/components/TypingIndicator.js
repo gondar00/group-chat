@@ -1,7 +1,7 @@
-import React from 'react';
-import { Subscription } from 'react-apollo';
-import gql from 'graphql-tag';
-import '../App.css';
+import React from 'react'
+import { Subscription } from 'react-apollo'
+import gql from 'graphql-tag'
+import '../App.css'
 
 const getUserTyping = gql`
   subscription ($selfId: Int ) {
@@ -18,13 +18,12 @@ const getUserTyping = gql`
       username
     }
   }
-`;
-
+`
 
 class TypingIndicator extends React.Component {
-  render() {
+  render () {
     return (
-      <div className="typingIndicator">
+      <div className='typingIndicator'>
         <Subscription
           subscription={getUserTyping}
           variables={{
@@ -32,13 +31,13 @@ class TypingIndicator extends React.Component {
           }}
         >
           {
-            ({ data, loading, error}) => {
-              if (loading) { return ""; }
-              if (error) { return ""; }
+            ({ data, loading, error }) => {
+              if (loading) { return '' }
+              if (error) { return '' }
               if (data.user_typing.length === 0) {
-                return "";
+                return ''
               } else {
-                return `${data.user_typing[0].username} is typing ...`;
+                return `${data.user_typing[0].username} is typing ...`
               }
             }
           }
@@ -48,4 +47,4 @@ class TypingIndicator extends React.Component {
   }
 };
 
-export default TypingIndicator;
+export default TypingIndicator

@@ -1,7 +1,6 @@
 import { ApolloConsumer } from 'react-apollo';
 import React from 'react';
 import Chat from './Chat';
-// import Login from './Login';
 import LandingPage from './LandingPage';
 import '../App.css';
 

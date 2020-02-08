@@ -20,11 +20,6 @@ const addUser = gql`
 `
 
 const LandingPage = (props) => {
-  const reactLogo = require('../images/React-logo.png')
-  const graphql = require('../images/graphql.png')
-  const hasuraLogo = require('../images/green-logo-white.svg')
-  const apolloLogo = require('../images/apollo.png')
-  const rightImg = require('../images/chat-app.png')
   const handleKeyPress = (key, mutate, loading) => {
     if (!loading && key.charCode === 13) {
       mutate()
@@ -39,8 +34,9 @@ const LandingPage = (props) => {
       onCompleted={(data) => {
         props.login(data.insert_user.returning[0].id)
       }}
-      onError={() => {
-        alert('Please try again with a different username.')
+      onError={(e) => {
+        console.log(e)
+        alert('Error')
         props.setUsername('')
       }}
     >
@@ -52,7 +48,7 @@ const LandingPage = (props) => {
               <div>
                 <div className='headerWrapper'>
                   <div className='headerDescription'>
-                    Group chat application <i className='em em-sunglasses' />
+                    Group chat application
                   </div>
                 </div>
                 <div className='mainWrapper'>
@@ -74,12 +70,7 @@ const LandingPage = (props) => {
                             type='submit'
                             onClick={(e) => {
                               e.preventDefault()
-                              if (props.username.match(/^[a-z0-9_-]{3,15}$/g)) {
-                                insert_user()
-                              } else {
-                                alert('Invalid username. Spaces and special characters not allowed. Please try again')
-                                props.setUsername('')
-                              }
+                              insert_user()
                             }}
                             disabled={loading || props.username === ''}
                           >

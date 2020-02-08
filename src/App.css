@@ -70,7 +70,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: linear-gradient(to bottom right,#000,#3b2e2a);
+  background-image: linear-gradient(to bottom right,#000,#f93c18);
   opacity: .9;
 }
 .minHeight {
